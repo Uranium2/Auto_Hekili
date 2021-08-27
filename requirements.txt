@@ -1,0 +1,10 @@
+chromedriver-py==92.0.4515.43
+ImageHash==4.2.1
+matplotlib==3.4.3
+numpy==1.21.2
+opencv-python==4.5.3.56
+PyDirectInput==1.0.4
+pynput==1.7.3
+PySimpleGUI==4.46.0
+requests==2.26.0
+selenium==3.141.0

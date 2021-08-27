@@ -1,0 +1,103 @@
+## Enhancement Shaman
+## July 9, 2021
+
+actions.precombat=windfury_weapon,if=buff.windfury_weapon.remains<300
+actions.precombat+=/flametongue_weapon,if=buff.flametongue_weapon.remains<300
+actions.precombat+=/bottled_flayedwing_toxin
+actions.precombat+=/lightning_shield,if=buff.lightning_shield.remains<300
+actions.precombat+=/stormkeeper,if=talent.stormkeeper.enabled
+actions.precombat+=/windfury_totem,if=!runeforge.doom_winds.equipped&buff.windfury_totem.down
+actions.precombat+=/fleshcraft,if=soulbind.pustule_eruption|soulbind.volatile_solvent
+actions.precombat+=/potion,if=boss
+
+## Executed every time the actor is available.
+actions=bloodlust
+# In-combat potion is before combat ends.
+actions+=/potion,if=boss&fight_remains<60
+# Interrupt
+actions+=/wind_shear
+actions+=/heart_essence
+actions+=/use_items
+actions+=/blood_fury,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+actions+=/berserking,if=!talent.ascendance.enabled|buff.ascendance.up
+actions+=/fireblood,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+actions+=/ancestral_call,if=!talent.ascendance.enabled|buff.ascendance.up|cooldown.ascendance.remains>50
+actions+=/bag_of_tricks,if=!talent.ascendance.enabled|!buff.ascendance.up
+actions+=/feral_spirit
+actions+=/fae_transfusion,if=(talent.ascendance.enabled|runeforge.doom_winds.equipped)&(soulbind.grove_invigoration|soulbind.field_of_blossoms|active_enemies=1)
+actions+=/ascendance,if=raid_event.adds.in>=90|active_enemies>1
+actions+=/windfury_totem,if=runeforge.doom_winds.equipped&buff.doom_winds_debuff.down&(raid_event.adds.in>=60|active_enemies>1)|buff.windfury_totem.down&(!runeforge.doom_winds.equipped|buff.doom_winds_debuff.up)
+# If only one enemy, priority follows the 'single' action list.
+actions+=/call_action_list,name=single,if=active_enemies=1
+# On multiple enemies, the priority follows the 'aoe' action list.
+actions+=/call_action_list,name=aoe,if=active_enemies>1
+actions+=/counterstrike_totem
+actions+=/skyfury_totem
+actions+=/primal_strike
+
+## Multi target action priority list
+actions.aoe=windstrike,if=buff.crash_lightning.up
+actions.aoe+=/fae_transfusion,if=soulbind.grove_invigoration|soulbind.field_of_blossoms
+actions.aoe+=/crash_lightning,if=runeforge.doom_winds.equipped&buff.doom_winds.up
+actions.aoe+=/frost_shock,if=buff.hailstorm.up
+actions.aoe+=/sundering
+actions.aoe+=/flame_shock,cycle_targets=1,if=refreshable&(talent.fire_nova.enabled|talent.lashing_flames.enabled|covenant.necrolord|runeforge.primal_lava_actuators.equipped)
+actions.aoe+=/primordial_wave,cycle_targets=1,if=!buff.primordial_wave.up
+actions.aoe+=/fire_nova,if=active_dot.flame_shock>=3
+actions.aoe+=/vesper_totem
+actions.aoe+=/lightning_bolt,if=buff.primordial_wave.up&buff.maelstrom_weapon.stack>=5
+actions.aoe+=/chain_lightning,if=buff.stormkeeper.up
+actions.aoe+=/crash_lightning,if=talent.crashing_storm.enabled|buff.crash_lightning.down
+actions.aoe+=/lava_lash,cycle_targets=1,if=talent.lashing_flames.enabled
+actions.aoe+=/lava_lash,if=buff.crash_lightning.up&(buff.hot_hand.up|(runeforge.primal_lava_actuators.equipped&buff.primal_lava_actuators.stack>6))
+actions.aoe+=/stormstrike,if=buff.crash_lightning.up
+actions.aoe+=/crash_lightning
+actions.aoe+=/chain_harvest,if=buff.maelstrom_weapon.stack>=5
+actions.aoe+=/elemental_blast,if=buff.maelstrom_weapon.stack>=5
+actions.aoe+=/stormkeeper,if=buff.maelstrom_weapon.stack>=5
+actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack=10
+actions.aoe+=/windstrike
+actions.aoe+=/stormstrike
+actions.aoe+=/lava_lash
+actions.aoe+=/fleshcraft,interrupt=1,if=soulbind.volatile_solvent
+actions.aoe+=/flame_shock,cycle_targets=1,if=refreshable
+actions.aoe+=/fae_transfusion
+actions.aoe+=/frost_shock
+actions.aoe+=/ice_strike
+actions.aoe+=/chain_lightning,if=buff.maelstrom_weapon.stack>=5
+actions.aoe+=/fire_nova,if=active_dot.flame_shock>1
+actions.aoe+=/earthen_spike
+actions.aoe+=/earth_elemental
+actions.aoe+=/windfury_totem,if=buff.windfury_totem.remains<30
+
+## Single target action priority list
+actions.single=windstrike
+actions.single+=/lava_lash,if=buff.hot_hand.up|(runeforge.primal_lava_actuators.equipped&buff.primal_lava_actuators.stack>6)
+actions.single+=/primordial_wave,if=!buff.primordial_wave.up
+actions.single+=/stormstrike,if=runeforge.doom_winds.equipped&buff.doom_winds.up
+actions.single+=/crash_lightning,if=runeforge.doom_winds.equipped&buff.doom_winds.up
+actions.single+=/ice_strike,if=runeforge.doom_winds.equipped&buff.doom_winds.up
+actions.single+=/sundering,if=runeforge.doom_winds.equipped&buff.doom_winds.up
+actions.single+=/flame_shock,if=!ticking
+actions.single+=/vesper_totem
+actions.single+=/frost_shock,if=buff.hailstorm.up
+actions.single+=/earthen_spike
+actions.single+=/fae_transfusion,if=!runeforge.seeds_of_rampant_growth.equipped|cooldown.feral_spirit.remains>15
+actions.single+=/chain_lightning,if=buff.stormkeeper.up
+actions.single+=/elemental_blast,if=buff.maelstrom_weapon.stack>=5
+actions.single+=/chain_harvest,if=buff.maelstrom_weapon.stack>=5&raid_event.adds.in>=90
+actions.single+=/lightning_bolt,if=buff.maelstrom_weapon.stack=10
+actions.single+=/stormstrike
+actions.single+=/stormkeeper,if=buff.maelstrom_weapon.stack>=5
+actions.single+=/fleshcraft,interrupt=1,if=soulbind.volatile_solvent
+actions.single+=/lava_lash
+actions.single+=/crash_lightning
+actions.single+=/flame_shock,cycle_targets=1,if=refreshable
+actions.single+=/frost_shock
+actions.single+=/ice_strike
+actions.single+=/sundering,if=raid_event.adds.in>=40
+actions.single+=/fire_nova,if=active_dot.flame_shock
+actions.single+=/lightning_bolt,if=buff.maelstrom_weapon.stack>=5
+actions.single+=/fleshcraft,if=soulbind.pustule_eruption
+actions.single+=/earth_elemental
+actions.single+=/windfury_totem,if=buff.windfury_totem.remains<30
