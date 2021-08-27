@@ -1,6 +1,6 @@
-# AUTO_Hekili
+# AUTO_Hekili (WIP)
 
-AUTO_Hekili is a program that will attempt to read the Hekili in-game main icon, and send a keystroke regarding to this spell.
+AUTO_Hekili is a program that will attempt to read the [Hekili](https://github.com/Hekili/hekili) in-game main icon, and send a keystroke regarding to this spell.
 
 
 # Disclaimer 
