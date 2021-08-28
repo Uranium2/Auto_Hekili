@@ -5,7 +5,7 @@ AUTO_Hekili is a program that will attempt to read the [Hekili](https://github.c
 
 # Disclaimer 
 
-This project has no mean to be efficient and to replace your brain while you play.
+This project has no mean to be efficient or to replace your brain while you play.
 
 This program is surely against ToS of World of Warcraft since it is sending keyboard keys.
 
