@@ -21,7 +21,7 @@ I do not take any responsibility for any account bans.
         $> git clone https://github.com/Uranium2/Auto_Hekili
         $> cd Auto_Hekili
         $> python3 -m venv .venv
-        $> .venv\Script\activate
+        $> .venv\Scripts\activate
         (.venv) $> pip3 install -r requirements.txt
         ```
 
