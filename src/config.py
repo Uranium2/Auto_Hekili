@@ -11,7 +11,7 @@ def load_json_save():
     if not os.path.isfile(path):
         with open(path, "w+") as outfile:
             json.dump(
-                {"config_path": path, "Class": "Death_Knight_Blood"},
+                {"config_path": path, "Class": "Death_Knight_Blood", "location" : (0, 0)},
                 outfile,
                 indent=4,
                 sort_keys=True,

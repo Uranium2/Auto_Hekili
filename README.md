@@ -1,11 +1,11 @@
-# AUTO_Hekili
+# AUTO_Hekili (WIP)
 
-AUTO_Hekili is a program that will attempt to read the Hekili in-game main icon, and send a keystroke regarding to this spell.
+AUTO_Hekili is a program that will attempt to read the [Hekili](https://github.com/Hekili/hekili) in-game main icon, and send a keystroke regarding to this spell.
 
 
 # Disclaimer 
 
-This project has no mean to be efficient and to replace your brain while you play.
+This project has no mean to be efficient or to replace your brain while you play.
 
 This program is surely against ToS of World of Warcraft since it is sending keyboard keys.
 

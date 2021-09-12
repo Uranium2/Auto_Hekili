@@ -39,6 +39,7 @@ def make_layout(config):
                     default_value=class_spec,
                     enable_events=True,
                     key="Class",
+                    readonly=True,
                 )
             ],
             [sg.Button("Set Hekili spellbox square", key="-POS-")],
@@ -53,7 +54,7 @@ def make_layout(config):
 
 
 def make_window(config):
-    window = sg.Window("Auto Hekili", make_layout(config), finalize=True)
+    window = sg.Window("Auto Hekili", make_layout(config), finalize=True, location=config["location"])
     window.bind("<Key-F3>", "F3")
     return window
 
@@ -95,6 +96,8 @@ def main_gui():
         if event == "F3":
             down_f3 = set_process_state(not down_f3, window)
         if event == "Class":
+            win_posX, win_posY = window.CurrentLocation()
+            edit_config("location", (win_posX, win_posY), config)
             window.close()
             edit_config("Class", values["Class"], config)
             window = make_window(config)
